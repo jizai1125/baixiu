@@ -1,56 +1,56 @@
 <?php
-  //载入配置文件
-  require_once '../config.php';
-  session_start();
-  function login(){
-    //校验表单
-    if(empty($_POST['email'])){
-      $GLOBALS['erro_message']='邮箱不能为空';
-      return;
-    }
-    if(empty($_POST['password'])){
-      $GLOBALS['erro_message']='密码不能为空';
-      return;
-    }
-    //获取表单字段值
-    $email=$_POST['email'];
-    $psw=$_POST['password'];
-    //连接数据库判断是否正确
-    $conn=mysqli_connect(CHEN_DB_HOST,CHEN_DB_USER,CHEN_DB_PASSWORD,CHEN_DB_NAME);
-    if(!$conn){
-      exit("数据库连接失败");
-    }
-    $query=mysqli_query($conn,"select * from users where email='{$email}' limit 1;");
-    if(!$query){
-      $GLOBALS['erro_message']='失败，重试';
-      return;
-    }
-    $user=mysqli_fetch_assoc($query);
-    if(!$user){
-      $GLOBALS['erro_message']='邮箱与密码不匹配';
-      return;
-    }
-    if($user['password']!==$psw){
-      $GLOBALS['erro_message']='邮箱与密码不匹配';
-      return;
-    }
-    //释放结果内存， 关闭连接
-    mysqli_free_result($query);
-    mysqli_close($conn);
-    //设置用户状态标识，为了后续可以获取当前登录用户的信息
-    $_SESSION['current_user']=$user;
-    //跳转页面
-    header('location: /admin/index.php');
+//载入配置文件
+require_once '../config.php';
+session_start();
+function login(){
+  //校验表单
+  if(empty($_POST['email'])){
+    $GLOBALS['erro_message']='邮箱不能为空';
+    return;
   }
+  if(empty($_POST['password'])){
+    $GLOBALS['erro_message']='密码不能为空';
+    return;
+  }
+  //获取表单字段值
+  $email=$_POST['email'];
+  $psw=$_POST['password'];
+  //连接数据库判断是否正确
+  $conn=mysqli_connect(CHEN_DB_HOST,CHEN_DB_USER,CHEN_DB_PASSWORD,CHEN_DB_NAME);
+  if(!$conn){
+    exit("数据库连接失败");
+  }
+  $query=mysqli_query($conn,"select * from users where email='{$email}' limit 1;");
+  if(!$query){
+    $GLOBALS['erro_message']='失败，重试';
+    return;
+  }
+  $user=mysqli_fetch_assoc($query);
+  if(!$user){
+    $GLOBALS['erro_message']='邮箱与密码不匹配';
+    return;
+  }
+  if($user['password']!==$psw){
+    $GLOBALS['erro_message']='邮箱与密码不匹配';
+    return;
+  }
+  //释放结果内存， 关闭连接
+  mysqli_free_result($query);
+  mysqli_close($conn);
+  //设置用户状态标识，为了后续可以获取当前登录用户的信息
+  $_SESSION['current_user']=$user;
+  //跳转页面
+  header('location: /admin/index.php');
+}
 
-  if($_SERVER['REQUEST_METHOD']==='POST'){
-    login();
-  }
-  //退出登录
-  if($_SERVER['REQUEST_METHOD']==='GET' && isset($_GET['action']) && $_GET['action']=='logout'){
-    unset($_SESSION['current_user']);
-  }
- ?>
+if($_SERVER['REQUEST_METHOD']==='POST'){
+  login();
+}
+//退出登录
+if($_SERVER['REQUEST_METHOD']==='GET' && isset($_GET['action']) && $_GET['action']=='logout'){
+  unset($_SESSION['current_user']);
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
