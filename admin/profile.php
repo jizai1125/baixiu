@@ -19,6 +19,7 @@ function update(){
     $GLOBALS['message']='更新失败！';
     return;
   }
+  // $success 标识是否保存成功
   $GLOBALS['success']=true;
   $GLOBALS['message']='更新成功！';
 }
