@@ -1,8 +1,11 @@
 <!-- 也可以利用 $_SERVER['PHP_SELF'] 获取当前访问的url地址，替换$current_page -->
 <?php
-// 使用物理路径解决使用相对路径遇到的问题(当前文件的载入路径要根据载入该文件的路径决定，否则会找不到文件)，
+// 使用物理路径解决使用相对路径遇到的问题(当前文件的载入路径要根据载入该文件的文件路径决定，否则会找不到文件)，
 require_once dirname(__FILE__).'/../../functions.php';
+chen_get_current_user();
+// 获取载入该页面的页面标识，突出显示在菜单项
 $current_page=isset($current_page) ? $current_page : '';
+// 获取当前登录的用户信息
 $current_user=$_SESSION['current_user'];
 ?>
 <div class="aside">
