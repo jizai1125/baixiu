@@ -1,44 +1,45 @@
 <?php
 require_once '../functions.php';
 chen_get_current_user();
-function add(){
-// 校验表单
-if(empty($_POST['email'])){
-  $GLOBALS['message']='邮箱必填！';
-  return;
-}
-if(empty($_POST['slug'])){
-  $GLOBALS['message']='别名必填！';
-  return;
-}
-if(empty($_POST['password'])){
-  $GLOBALS['message']='密码必填！';
-  return;
-}
-$email=$_POST['email'];
-$slug=$_POST['slug'];
-$password=$_POST['password'];
-$nickname=$_POST['nickname'];
-// 校验别名是否唯一
-$has_slug=(int)chen_fetch_one("select count(1) from users where slug='{$slug}';")['count(1)'];
-$has_email=(int)chen_fetch_one("select count(1) from users where email='{$email}';")['count(1)'];
-if($has_email>0){
-  $GLOBALS['message']='邮箱已被注册了！';
-  return;
-}
-if($has_slug>0){
-  $GLOBALS['message']='别名已被注册了！';
-  return;
-}
-// 保存数据
-$row=chen_execute("insert into users (email,slug,password,nickname,status) values ('{$email}','{$slug}','{$password}','{$nickname}','activated');");
-if($row<0){
-  $GLOBALS['message']='添加失败！';
-  return;
-}
 
-$GLOBALS['success']=true;
-$GLOBALS['message']='添加成功！';
+function add(){
+  // 校验表单
+  if(empty($_POST['email'])){
+    $GLOBALS['message']='邮箱必填！';
+    return;
+  }
+  if(empty($_POST['slug'])){
+    $GLOBALS['message']='别名必填！';
+    return;
+  }
+  if(empty($_POST['password'])){
+    $GLOBALS['message']='密码必填！';
+    return;
+  }
+  $email=$_POST['email'];
+  $slug=$_POST['slug'];
+  $password=$_POST['password'];
+  $nickname=$_POST['nickname'];
+  // 校验别名是否唯一
+  $has_slug=(int)chen_fetch_one("select count(1) from users where slug='{$slug}';")['count(1)'];
+  $has_email=(int)chen_fetch_one("select count(1) from users where email='{$email}';")['count(1)'];
+  if($has_email>0){
+    $GLOBALS['message']='邮箱已被注册了！';
+    return;
+  }
+  if($has_slug>0){
+    $GLOBALS['message']='别名已被注册了！';
+    return;
+  }
+  // 保存数据
+  $row=chen_execute("insert into users (email,slug,password,nickname,status) values ('{$email}','{$slug}','{$password}','{$nickname}','activated');");
+  if($row<0){
+    $GLOBALS['message']='添加失败！';
+    return;
+  }
+// $success 标识是否保存成功
+  $GLOBALS['success']=true;
+  $GLOBALS['message']='添加成功！';
 }
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
