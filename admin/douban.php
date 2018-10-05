@@ -1,4 +1,7 @@
 <?php
+/*
+  此页面为扩展，获取豆瓣电影接口数据
+*/
 //校验当前访问的用户 session 有没有用户标识
 require_once '../functions.php';
 chen_get_current_user();
