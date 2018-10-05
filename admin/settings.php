@@ -2,7 +2,7 @@
 require_once '../functions.php';
 chen_get_current_user();
 
- ?>
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
