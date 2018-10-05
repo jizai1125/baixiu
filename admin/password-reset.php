@@ -1,5 +1,6 @@
 <?php
 require_once '../functions.php';
+
 $current_user=chen_get_current_user();
 
 function update(){
