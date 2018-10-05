@@ -5,7 +5,6 @@ chen_get_current_user();
 
 //编辑功能：获取数据库数据将数据显示在表单
 if(!empty($_GET['id'])){
-
   $id=$_GET['id'];
   //防止sql注入
   if(!is_numeric($id)){
@@ -28,7 +27,7 @@ function add_categories(){
   $name=$_POST['name'];
   $slug=$_POST['slug'];
   $rows=chen_execute("insert into categories (name,slug) values ('{$name}','{$slug}');");
-  //设置 $success变量标识是否添加成功
+  // $success变量标识是否添加成功
   $GLOBALS['success']= $rows>0;
   $GLOBALS['message']= $rows<=0 ? '添加失败': '添加成功';
 }
@@ -61,8 +60,8 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
   }
 }
 
-  //查询放在修改操作下面
-  $categories=chen_fetch_all("select * from categories;");
+//查询放在修改操作下面
+$categories=chen_fetch_all("select * from categories;");
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
