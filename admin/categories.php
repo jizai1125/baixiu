@@ -23,7 +23,7 @@ function add_categories(){
     $GLOBALS['message']='别名不能为空哦！';
     return;
   }
-  //持久化
+  // 保存数据
   $name=$_POST['name'];
   $slug=$_POST['slug'];
   $rows=chen_execute("insert into categories (name,slug) values ('{$name}','{$slug}');");
