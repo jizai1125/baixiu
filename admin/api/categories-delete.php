@@ -1,6 +1,7 @@
 <?php
 require_once '../../functions.php';
 chen_get_current_user();
+
 //通过 get 方式获取对应数据的id
 if(empty($_GET['id'])){
     exit('<h1>缺少必要参数!</h1>');
