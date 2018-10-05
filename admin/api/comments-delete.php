@@ -1,7 +1,6 @@
 <?php
 require_once '../../functions.php';
 chen_get_current_user();
-
 //通过get方式 获取id ，连接数据库删除对应的数据
 //校验id
 if(empty($_GET['id'])){
