@@ -42,7 +42,8 @@ function add_post(){
     $GLOBALS['message']='图片上传失败！';
     return;
   }
-  $feature=substr($target, 2);//保存绝对路径
+  //保存绝对路径
+  $feature=substr($target, 2);
 
   //接收保存数据
   $title=$_POST['title'];
