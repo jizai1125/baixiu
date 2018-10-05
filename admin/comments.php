@@ -250,7 +250,7 @@ chen_get_current_user();
         selectList.prop('checked',checked).trigger('change');
       })
 
-      //批量操作按钮事件
+      //批量操作事件
       selectBtns
       // 批准
       .on('click','.approvedBtn',function(){
