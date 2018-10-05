@@ -3,6 +3,7 @@
  * 根据用户邮箱获取用户头像
  */
 require_once '../../config.php';
+
 if(empty($_GET['email'])){
     exit('缺少必要参数');
 }
