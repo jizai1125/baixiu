@@ -18,7 +18,7 @@ if($page > $total_pages){
     header('location: /admin/api/comments-list.php?page='.$total_pages);
     exit;
 }
-// 分页查询评论数据===================
+// 分页查询评论数据=====================
 $comments=chen_fetch_all("select comments.*,
 posts.title as post_title
 from comments
