@@ -1,4 +1,7 @@
 <?php
+/*
+删除用户信息
+ */
 require_once '../../functions.php';
 if(empty($_GET['id'])){
     exit('<h1>缺少参数！</h1>');
