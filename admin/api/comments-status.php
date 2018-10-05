@@ -1,7 +1,7 @@
 <?php
 require_once '../../functions.php';
 header('Content-Type: application/json');
-
+// 校验从get请求获取的数据
 if(empty($_GET['id']) || empty($_POST['status'])){
     exit('<h1>缺少必要参数！</h1>');
 }
