@@ -1,4 +1,7 @@
 <?php
+/*
+获取用户信息
+ */
 require_once '../../functions.php';
 
 header('Content-Type: application/json');
