@@ -8,7 +8,7 @@ $posts_drafted_count=chen_fetch_one("select count(1) as num from posts where sta
 $categories_count=chen_fetch_one("select count(1) as num from categories;")['num'];
 $comments_count=chen_fetch_one("select count(1) as num from comments;")['num'];
 $comments_held_count=chen_fetch_one("select count(1) as num from comments where status='held'")['num'];
-//判断查询的数据是否存在，不存在则设为0
+//校验查询的数据是否存在，不存在则设为0
 if(empty($posts_count) || !isset($posts_count)){
   $posts_count=0;
 }
