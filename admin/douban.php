@@ -69,7 +69,7 @@ chen_get_current_user();
   </script>
   <script type="text/javascript">
     $(function($){
-      // jquery底层方法，注意jsonp 和ajax 没有半毛钱关系
+      // jquery底层方法
       $.ajax({
         url: 'http://api.douban.com/v2/movie/in_theaters',
         dataType: 'jsonp',
@@ -84,16 +84,6 @@ chen_get_current_user();
           $('#content').html(html);
         }
       })
-      //第二种方法
-     /* $.get('http://api.douban.com/v2/movie/in_theaters',function(data){
-        console.log(data);
-        $("#movie_count").text(data.count);
-        var html=$('#movie').render({
-          movie: data.subjects
-        });
-        $('#content').html(html);
-      },'jsonp')
-      */
     })
 
     // 第二种方法
