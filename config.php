@@ -10,7 +10,7 @@ define('CHEN_DB_USER','root');
 /**
  * 数据库密码
  */
-define('CHEN_DB_PASSWORD','199611');
+define('CHEN_DB_PASSWORD','1991');
 /**
  * 数据库名称
  */
